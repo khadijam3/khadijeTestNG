@@ -1,34 +1,56 @@
 package pageobject;
 
+import TestBase.testClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import utilites.CommonMethods;
+
 import static org.testng.AssertJUnit.assertEquals;
 
-public class facbooksearchPageElement {
+public class facbooksearchPageElement extends CommonMethods {
     WebDriver driver;
 
     public facbooksearchPageElement(WebDriver driver) {
 
-        this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
-    By UserName_editbox = By.id("email");
-    By Password_editbox = By.id("pass");
-    By Login_Btn = By.name("login");
+//    By UserName_editbox = By.id("email");
+//    By Password_editbox = By.id("pass");
+//    By Login_Btn = By.name("login");
+
+    @FindBy(id = "email")
+    public WebElement userName;
+
+    @FindBy(id= "pass")
+    public WebElement password;
+
+    @FindBy(id = "login")
+    public WebElement loginBtn;
 
     public void EnterUserName() {
-        driver.findElement(UserName_editbox).click();
-            driver.findElement(UserName_editbox).sendKeys("Testuser");
+        userName.sendKeys("khadija.rhabibi@gmail.com");
     }
     public void EnterPassword() {
-        driver.findElement(Password_editbox).click();
-            driver.findElement(Password_editbox).sendKeys("Tester123");
+
+        password.sendKeys("khadija123");
         }
     public void verifyLogin() {
-        driver.findElement(UserName_editbox).click();
-            driver.findElement(Login_Btn).click();
-            String title = driver.getTitle();
-            assertEquals(title, "Facebook - Log In or Sign Up");
+            String title=testClass.driver.getTitle();
+            System.out.println(title);
+            Assert.assertEquals(title, "Facebook - log in or sign up");
+            if(title.equalsIgnoreCase("Facebook - log In or Sign Up")){
+            System.out.println("test pass");
+
+        }else{
+                System.out.println("test fails");
+            }
+
+        }
 
 
         }
-    }
+

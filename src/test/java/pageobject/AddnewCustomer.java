@@ -25,10 +25,10 @@ public class AddnewCustomer extends CommonMethods {
     @FindBy(xpath = "//*[@name='city']")
     public WebElement City;
 
-    @FindBy(xpath ="//*[@name='state']")
+    @FindBy(xpath = "//*[@name='state']")
     public WebElement State;
 
-    @FindBy(xpath ="//*[@name='pinno']")
+    @FindBy(xpath = "//*[@name='pinno']")
     public WebElement pin;
 
     @FindBy(xpath = "//*[@name='telephoneno']")
@@ -44,10 +44,26 @@ public class AddnewCustomer extends CommonMethods {
     public WebElement subBTN;
 
 
+    public AddnewCustomer() {
 
-    public AddnewCustomer(){
-
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
+
+public void openCustomerPage() {
+    newCustomer.click();
+    sendText(FiledName, "khadija");
+    redioBton.click();
+    sendText(calenderdate, "0312/2019");
+    sendText(addressBox, "13545 Princedale Drive zip 22193");
+    sendText(City, "Woodbrige");
+    sendText(State, "VA");
+    sendText(pin, "23091");
+    sendText(Telephone, "617-652-1234");
+    sendText(email, "khadija.rhabbibi@gmail.com");
+    sendText(EmailPasswrod, "Khadija123");
+    subBTN.click();
+
 }
+}
+

@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/rasik/Downloads/JavaBatch9-main/Grue99Appwith TestNG/pom.xml"><classes/></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/rasik/Grue99Appwith TestNG/src/test">
+        <classes>
+    <class name="Testclass.google_testScenariomethod">
+        <methods>
+            <include name="searchGoogleMethod"/>
+            <include name="verifyandAcesseFacebook"/>
+            <include name="verifyLogin"/>
+        </methods>
+    </class>
+    <class name="Testclass.loginTest"><methods><include name="test2"/>
+    </methods>
+    </class>
+</classes>
+</test>
+</suite>

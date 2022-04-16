@@ -21,4 +21,11 @@ public class Guru99LoginWithPageFactory extends CommonMethods {
         PageFactory.initElements(driver, this);
     }
 
+public void Guru99page(){
+       sendText(userName,"mngr392551");
+       sendText(password,"sYdEtah");
+        loginBtn.click();
 }
+
+}
+

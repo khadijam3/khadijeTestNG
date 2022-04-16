@@ -1,51 +1,30 @@
 package Testclass;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
+import TestBase.testClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageobject.GoolgesearchPageEle;
+import pageobject.GoogleSearchPageEle;
 import pageobject.facbooksearchPageElement;
+import utilites.CommonMethods;
 
-import java.util.concurrent.TimeUnit;
-
-public class google_testScenariomethod {
-    WebDriver driver;
-    GoolgesearchPageEle objectRepo;
+public class google_testScenariomethod extends CommonMethods {
     @BeforeTest
-
     public void beforeTest() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-        driver.get("https://www.google.com/");
+        testClass.setUp();
+        testClass.SetWithSpecificURL("https://www.google.com");
+    }
 
+    @Test
+    public void search() {
+        GoogleSearchPageEle googlePage = new GoogleSearchPageEle(driver);
+        googlePage.searchG();
     }
-    @Test(priority = 0)
-     public void searchGoogleMethod(){
-        GoolgesearchPageEle Page=new GoolgesearchPageEle(driver);
-         Page.searchGoogle("facebook");
-
-    }
-    @Test(priority = 1)
-    public void verifyandAcesseFacebook() {
-        objectRepo = new GoolgesearchPageEle(driver);
-        objectRepo.ClickFacebook();
-    }
-    @Test(priority = 2)
+@Test
     public void verifyLogin() {
         facbooksearchPageElement facebookPage = new facbooksearchPageElement(driver);
         facebookPage.EnterUserName();
         facebookPage.EnterPassword();
         facebookPage.verifyLogin();
-
+        testClass.Teardown();
     }
-        @AfterTest
-    public void afterTest(){
-
-        driver.quit();
-    }
-
 }
